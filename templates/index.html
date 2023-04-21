@@ -4,9 +4,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Summarizer</title>
 </head>
 <body>
-    <h1>TEST</h1>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light me-3 fw-bold" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/myfiles">MyFiles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/wikipedia">Summary from Wikipedia</a>
+                  </li>
+                </ul>
+              </div>
+            <!-- <a class="navbar-brand text-light" href="/">Home</a>
+            <a class="navbar-brand text-light" href="#">MyFiles</a>
+            <a class="navbar-brand text-light" href="#">Summary from Wikipedia</a> -->
+        </div>
+    </nav>
+    <div class="container jumbotron d-flex align-items-center min-vh-100">
+        <div class="w-100 mb-50" >
+            <div id="inputMenu">
+                <div class="text-center mb-4">
+                    <h1>Input your articles</h1>
+                </div>
+                <div class="border border-purple p-4 rounded">
+                    <div class="btn-group mb-3" role="group" >
+                        <input type="radio" class="btn-check" id="input1" name="inputtype" value="1" checked onchange="handleInputTypeChange(this)">
+                        <label for="input1" class="btn btn-outline-purple shadow-none">Upload text file</label>
+                        <input type="radio" class="btn-check" id="input2" name="inputtype" value="2" onchange="handleInputTypeChange(this)">
+                        <label for="input2" class="btn btn-outline-purple shadow-none">Type text</label>
+                    </div>
+
+                    <form action="{{MAIN_URL}}summary" method="POST" enctype="multipart/form-data" id="fileform" >
+                        <input class="form-control form-control-lg" id="file" type="file" name="file[]" multiple accept=".txt, .pdf"/>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button class="btn btn-hover color-summary width180" onclick="showLoad()">Summary</button>
+                        </div>
+                    </form>
+                    <form action="{{MAIN_URL}}summary" method="POST" style="display: none;" id="typeform" >
+                        <div class="form-group"> 
+                            <textarea class="form-control" name="articles" id="textinput" rows="5" placeholder="Type your text"></textarea>
+                            <div class="d-flex justify-content-center mt-2">
+                                <button class="btn btn-hover color-summary width180" onclick="showLoad()">Summary</button>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="loading" style="display: none;">
+                <div class="text-center mb-4">
+                    <h1>Processing, please wait</h1>
+                </div>
+                <div class="text-center mb-4">
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+    </div>
 </body>
+<script>
+    var inputMenu = document.getElementById('inputMenu')
+    var loading = document.getElementById('loading')
+    
+
+    function handleInputTypeChange(radio){
+        let typeform = document.getElementById('typeform')
+        let fileform = document.getElementById('fileform')
+        if(radio.value == 1){
+            document.getElementById('textinput').value = '';
+            fileform.style.display = 'block'
+            typeform.style.display = 'none'
+        }else{
+            document.getElementById("file").value = "";
+            fileform.style.display = 'none'
+            typeform.style.display = 'block'
+        }
+    }
+
+    function showLoad(){
+        inputMenu.style.display = 'none'
+        loading.style.display = 'block'
+    }
+
+
+</script>
 </html>

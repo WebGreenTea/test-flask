@@ -1,0 +1,117 @@
+
+
+body {
+    background: #2C1544;  
+    /* background: -webkit-linear-gradient(to right, #243B55, #141E30);  
+    background: linear-gradient(to right, #243B55, #141E30);  */
+    color: #fff;
+}
+
+nav {
+    background: #603874
+}
+
+.border-purple{
+    border: 1px solid #AE00A8 !important;
+}
+
+.btn-outline-purple{
+    color: #fff;
+    border: 1px solid #603874;
+    
+}
+.btn-outline-purple:hover{
+    color: #fff;
+    background: #603874;
+    border: 1px solid #603874;
+}
+input[type="radio"]:checked + .btn {
+    color: #fff;
+    background: #603874!important;
+    border: 1px solid #603874;
+}
+
+.width180{
+    width: 180px;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin: 10%;
+    text-align: center;
+}
+
+.btn-hover {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 0px;
+    height: 45px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 10px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+.btn-hover.color-del {
+    background-image: linear-gradient(to right, #ee2727, #c40f0f, #b80b0b, #ee2727);
+    box-shadow: 0 4px 15px 0 rgba(104, 0, 0, 0.75);
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-hover.color-summary {
+    background-image: linear-gradient(to right, #AE00A8, #7f4c99, #603874, #AE00A8);
+    box-shadow: 0 4px 15px 0 rgba(138, 0, 92, 0.75);
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.filename{
+    color: #00becc;
+}
+.btn-file{
+    background-color: #fff;
+    color: #363636;
+    width:100%
+}
+.btn-wiki{
+    background-color: #fff;
+    color: #363636;
+}
+.btn-file:disabled{
+    background-color: #ab65ce;
+    color: #fff;
+    width:100%
+}
+.fileBG{
+    background: #603874;
+    border-radius: 18px;
+}
+.text-time{
+    color: #999999;
+}

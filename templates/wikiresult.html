@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Summarizer</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light me-3 fw-bold" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/myfiles">MyFiles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/wikipedia">Summary from Wikipedia</a>
+                  </li>
+                </ul>
+              </div>
+            <!-- <a class="navbar-brand text-light" href="/">Home</a>
+            <a class="navbar-brand text-light" href="#">MyFiles</a>
+            <a class="navbar-brand text-light" href="#">Summary from Wikipedia</a> -->
+        </div>
+    </nav>
+    <div class="container">
+        <div class="d-flex justify-content-center mt-5 mb-5">
+            <h1 class="fw-bold mb-3">Summarized articles from Wikipedia</h1>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h2 class="fw-bold">{{title}}</h2>
+            </div>
+            <div>
+                <button class="btn btn-wiki rounded-pill fw-bold" onclick="window.open('{{url}}')">View on Wikipedia</button>
+            </div>
+        </div>
+        <div>
+            <pre style="white-space: pre-line; line-height: 2.5; direction: ltr;">{{summary}}</pre>
+        </div>
+        <!-- <div class="row">
+            {% for pic in img %}
+                <div class="col-2">
+                    <img src="{{pic}}" alt="" class="w-100">
+                </div>
+            {% endfor %}
+        </div> -->
+    </div>
+</html>

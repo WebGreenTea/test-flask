@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Summarizer</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light me-3 fw-bold" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/myfiles">MyFiles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/wikipedia">Summary from Wikipedia</a>
+                  </li>
+                </ul>
+              </div>
+            <!-- <a class="navbar-brand text-light" href="/">Home</a>
+            <a class="navbar-brand text-light" href="#">MyFiles</a>
+            <a class="navbar-brand text-light" href="#">Summary from Wikipedia</a> -->
+        </div>
+    </nav>
+    <div class="container jumbotron d-flex align-items-center min-vh-100">
+        <div class="w-100 mb-50" >
+            <div id="inputMenu">
+                <div class="text-center mb-4">
+                    <h1>Search articles from Wikipedia</h1>
+                </div>
+                <div class="border border-purple p-4 rounded">
+                    <form action="{{MAIN_URL}}wikiresult" method="POST" enctype="multipart/form-data" id="searchform" onsubmit="event.preventDefault();">
+                        <input class="form-control form-control-lg" id="search" type="text" name="search" onfocus="clearFail()"/>
+                        <p class="text-danger" id="searchfail"></p>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button class="btn btn-hover color-summary" onclick="searchwiki()">Search and Summary</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="loading" style="display: none;">
+                <div class="text-center mb-4">
+                    <h1>Processing, please wait</h1>
+                </div>
+                <div class="text-center mb-4">
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                    <div class="spinner-grow ms-2 me-2" role="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var loading = document.getElementById('loading')
+    var inputMenu = document.getElementById('inputMenu')
+    var searchfail = document.getElementById('searchfail')
+    var searchform = document.getElementById('searchform')
+
+
+    function searchwiki(){
+        search = document.getElementById('search').value.trim()
+        if(search != ''){
+            inputMenu.style.display = 'none'
+            loading.style.display = 'block'
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "searchwiki",
+                dataType: "json",
+                data: JSON.stringify({search: search}),
+                success:function(res){
+                    let title = res['title']
+                    if(title == ''){
+                        searchfail.innerHTML = `"${search}" does not match any page on wikipedia.`
+                        inputMenu.style.display = 'block'
+                        loading.style.display = 'none'
+                    }else{
+                        searchform.submit();
+                    }
+                }
+            });
+        }
+        
+    }
+
+    function clearFail(){
+        searchfail.innerHTML = ''
+    }
+</script>
+</html>

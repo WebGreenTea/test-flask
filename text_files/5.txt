@@ -1,0 +1,37 @@
+This section has been expanded to the page Anonymous and the 2022 Russian invasion of Ukraine. Read more about this Operation there.
+
+On March 7, 2022, Anonymous actors DepaixPorteur and TheWarriorPoetz declared on Twitter[209] that they hacked 400 Russian surveillance cameras and broadcast them on a website.[210] They call this operation "Russian Camera Dump".[209][211]
+
+On March 25, 2022, DDoSecrets published approximately 22.5 gigabytes of emails allegedly from the Central Bank of Russia, which was allegedly hacked by Anonymous actor Thblckrbbtworld.[212] Included in the package are registrations, invoices, internal communications, documents, notes, bank statements, names of shareholders of various banks, bank licenses, names, addresses of clients, apparently high-profile clients, etc.
+
+On March 29, 2022, DDoSecrets published 2.4 gigabytes of emails from RostProekt, which was hacked by Anonymous actor DepaixPorteur.[213] RostProekt is a Russian construction company. The RostProekt hack was dubbed as a "celebration" for the grand opening of the now-defunct AnonymousLeaks, a leak site solely for leaks from the Anonymous Collective.[214]
+
+On April 2, 2022, DDoSecrets published approximately 200,000 emails from Capital Legal Services, which was hacked by Anonymous actor Wh1t3Sh4d0w.[215] Approximately 200,000 emails hacked from the Russian law firm Capital Legal Services, which practices law in a variety of areas. An additional 89,000 emails are located in a "Purges" mailbox, consisting largely of bounced email notifications, cron jobs and other server notifications.
+
+On April 4, 2022, DDoSecrets published more than 900,000 emails from the All-Russia State Television and Radio Broadcasting Company (VGTRK), which were hacked by the Anonymous aligned NB65.[216] VGTRK is a Russian state-owned broadcaster which operates five national TV stations, two international networks, five radio stations, and over 80 regional TV and radio networks. The Russian government has declared VGTRK essential for the "security of the state." VGTRK also runs the information agency Rossiya Segodnya / Росси́я сего́дня, which operates Sputnik, RIA Novosti and other entities.
+
+On April 7, 2022, DDoSecrets published approximately 100,000 emails from Aerogas, which was hacked by Anonymous.[217] Approximately 100,000 emails from Aerogas, an engineering company which specializes in the oil and gas industry. Aerogas' clients include Rosneft, NOVATEK, Volgagaz, Purneft and others.
+
+On April 11, 2022, DDoSecrets published approximately 230,000 emails from Blagoveshchensk City Administration, which was hacked by Anonymous.[218] 230,000 emails from the Blagoveshchensk City Administration / Благове́щенск from 2019 through 2022.
+
+On April 15, 2022, DDoSecrets published roughly 400 gigabytes of emails from the Continent Express, a Russian travel agency, which was hacked by the Anonymous aligned NB65.[219]
+
+On April 18, 2022, DDoSecrets published 222 gigabytes of emails, files and decryption keys from Gazregion, which was hacked by three different sources around the same time, including the Anonymous actor DepaixPorteur, the Anonymous affiliated NB65, and an unnamed actor.[220] A construction company specializing in gas pipelines and facilities. Gazregion's clients include Gazprom, and has thousands of kilometers of pipelines as part of the Russian Federation's program to transport gas throughout the different regions.
+
+On April 19, 2022, DDoSecrets published 15,600 emails from GUOV i GS - General Dept. of Troops and Civil Construction, which was hacked by the Anonymous actor DepaixPorteur.[221] A construction company that works on projects in the interests of the Russian Ministry of Defense. GUOV i GS is wholly owned by the Russian Ministry of Defense through JSC Garnizon (formerly Oboronservis) and JSC GUOV / ГУОВ, the Main Directorate for the Arrangement of Troops / Главное управление обустройства войск.
+
+On April 22, 2022, DDoSecrets published 365,000 emails from Accent Capital, which was hacked by Anonymous.[222] 365,000 emails from Accent Capital, a commercial real-estate investment firm. In contrast with many other real-estate investment firms, Accent Capital owns or is directly involved with the management of many of the properties its clients invest in.
+
+On April 25, 2022, DDoSecrets published nearly 1,100,000 emails from ALET/АЛЕТ, which was hacked by Anonymous.[223] Nearly 1.1 million emails from ALET / АЛЕТ, a customs broker for companies in the fuel and energy industries, handling exports and customs declarations for coal, crude oil, liquefied gases and petroleum products. ALET has worked with over 400 companies since 2011 to file over 119,000 customs declarations and has recommendations from Gazprom, Gazprom Neft and Bashneft. Approximately 75% of ALET's business comes from oil products, 10% from oil, and 9% from hydrocarbon products.
+
+On May 5, 2022, DDoSecrets published roughly 480 gigabytes of files, emails and disk images from CorpMSP, which was hacked by the Anonymous aligned NB65.[224] CorpMSP is a federal institution providing support to small and medium-sized businesses. The controlling shareholder of CorpMSP is the Russian Federation.
+
+On May 11, 2022, DDoSecrets published over 466 gigabytes of emails from the Nikolai M. Knipovich Polar Research Institute of Marine Fisheries and Oceanography (PINRO), which was hacked by Anonymous actors DepaixPorteur and B00daMooda.[225] 466 GB of emails from the Polar Branch of the Russian Federal Research Institute of Fisheries and Oceanography, whose studies determine the total allowable catch of different forms of commercial sea life.
+
+On May 12, 2022, DDoSecrets published over 7,000 emails from the Achinsk City Government, which was hacked by Anonymous.[226] Over 7,000 emails from the Achinsk city government.
+
+On May 13, 2022, DDoSecrets published 116,500 emails from SOCAR Energoresource, which was hacked by Anonymous.[227] 116,500 emails SOCAR Energoresource / ООО Сокар энергоресурс, which operates the Antipinsky Refinery and several oilfields. SOCAR Energoresource works directly with Gazprom, Rosneft and Lukoil and is partially owned by the State Oil Company of Azerbaijan Republic (SOCAR).
+
+On May 30, 2022, DDoSecrets published more than 184 gigabytes of emails from Metprom Group LLC, which was hacked by the Anonymous actors DepaixPorteur, B00daMooda, and Wh1t3Sh4d0w.[228] Emails from a metallurgic engineering and investment group involved in dozens of projects with ArcelorMittal, PAO NLMK, EVRAZ group enterprises, PAO Mechel plants, PAO Severstal, Isfahan metallurgical plant, Helwan metallurgical plant and others.
+
+On June 1, 2022, DDoSecrets published more than 1,000,000 emails from Vyberi Radio, which was hacked by Anonymous.[229] 1.5 million emails from the Vyberi Radio / Выбери Радио group, which operates around 100 radio stations in 18 cities throughout Russia, with over 8 million listeners.

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Summarizer</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light me-3 fw-bold" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/myfiles">MyFiles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/wikipedia">Summary from Wikipedia</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+            <h1 class="fw-bold mb-3">Summarized</h1>
+        </div>
+        <div>
+            {% for filename,summary in results %}
+                <p class="fw-bold fs-5 filename">{{filename}}</p>
+                <pre style="white-space: pre-line; line-height: 2.5; direction: ltr;">{{summary}}</pre>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

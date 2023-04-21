@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Summarizer</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light me-3 fw-bold" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/myfiles">MyFiles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand text-light ms-3 me-3 fw-bold" href="/wikipedia">Summary from Wikipedia</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-1 pt-5" id="maincontainer">
+        <div>
+            <h2 class="fw-bold">Your Files</h2>
+        </div>
+        <div class="row">
+            <div class="col-3" id="fileBtnList">
+                <!-- file name button is here -->
+            </div>
+            <div class="col-9 fileBG mb-5" id="fileContent">
+              <div id="loadfile" >
+                <div class="d-flex justify-content-center mt-5 mb-5">
+                  <div class="spinner-grow ms-2 me-2" role="status"></div>
+                  <div class="spinner-grow ms-2 me-2" role="status"></div>
+                  <div class="spinner-grow ms-2 me-2" role="status"></div>
+                  <div class="spinner-grow ms-2 me-2" role="status"></div>
+                </div>
+              </div>
+              <div id="infileContent" style="display: none;">
+                <div class="row">
+                  <div class="col-8">
+                    <h4 class="mt-2 ms-2 text-time" id="fileContent_time"></h4>
+                  </div>
+                  <div class="col-2" id="btnDelField">
+                    <!-- <button class="btn btn-hover color-del mt-2 w-100">Delete</button> -->
+                  </div>
+                  <div class="col-2" id="btnSummaryField">
+                    <!-- <button class="btn btn-hover color-summary mt-2">Summary</button> -->
+                  </div>
+                  
+                </div>
+                <h1 class="mt-2 ms-2" id="fileContent_name"></h1>
+                <div class="ms-2">
+                  <pre style="white-space: pre-line; line-height: 2.5; direction: ltr;" id="fileContent_txt"></pre>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+  var data = {{data|tojson}}
+  var filenames = data.filenames
+  var times =data.times
+  data = null
+  console.log(filenames)
+  console.log(times)
+
+  var fileBtnList = document.getElementById('fileBtnList')
+  var fileContent = document.getElementById('fileContent')
+  var infileContent = document.getElementById('infileContent')
+  var fileContent_name = document.getElementById('fileContent_name')
+  var fileContent_time = document.getElementById('fileContent_time')
+  var maincontainer = document.getElementById('maincontainer')
+  var loadfile = document.getElementById('loadfile')
+  var fileContent_txt = document.getElementById('fileContent_txt')
+  var btnSummaryField = document.getElementById('btnSummaryField')
+  var btnDelField = document.getElementById('btnDelField')
+
+  var currentFileIndex = 0
+
+  if(filenames.length == 0){
+    maincontainer.innerHTML = '<div class="container jumbotron d-flex align-items-center min-vh-100" ><div class="text-center w-100"><h1>Your file does not exist.</h1></div></div>'
+    maincontainer.className = 'container'
+  }else{
+    for(let i = 0;i<filenames.length;i++){
+      fileBtnList.innerHTML += `<button class="btn btn-file mt-1 mb-1" onclick="fileBtnHandle(this)" value="${i}" id="fileBtn${i}">${filenames[i]}</button>`
+    }
+
+    showfileContent(filenames[0],times[0])
+    document.getElementById(`fileBtn0`).setAttribute("disabled", ""); 
+  }
+
+  
+  function showfileContent(filename,time){
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "getfile_content",
+      dataType: "json",
+      data: JSON.stringify({filename: filename,time: time}),
+      success:function(res){
+        let txt = res['fileContent']
+        fileContent_name.innerHTML = filename
+        fileContent_time.innerHTML = timeFormat(time)
+
+        infileContent.style.display = 'block'
+        fileContent_txt.innerHTML = txt
+        loadfile.style.display = 'none'
+
+        btnSummaryField.innerHTML = '<button class="btn btn-hover color-summary mt-2 w-100" id="summaryBtn" onclick="summaryBtn()">Summary</button>'
+        btnDelField.innerHTML = '<button class="btn btn-hover color-del mt-2 w-100" onclick="delBtn()">Delete</button>'
+      }
+    })
+    
+  }
+  function fileBtnHandle(btn){
+    let name = btn.innerHTML
+    document.getElementById(`fileBtn${currentFileIndex}`).removeAttribute('disabled');//remove disable old button
+    currentFileIndex = parseInt(btn.value)
+    let time = times[currentFileIndex] 
+    let currentBtn = document.getElementById(`fileBtn${currentFileIndex}`)
+    currentBtn.setAttribute("disabled", ""); 
+    showfileContent(name,time)
+  }
+  function timeFormat(time){
+    time = time.split('_')[0]
+    date = time.split(' ')[0].replaceAll('-','/')
+    time = time.split(' ')[1].replaceAll('-',':')
+    return date+' '+time
+  }
+  
+  function summaryBtn(){
+    let filename = filenames[currentFileIndex]
+    let time = times[currentFileIndex]
+    // let form_data = new FormData();
+    // form_data.append("filename",filename)
+    // form_data.append("time",time)
+    
+    let form = $(`<form action="/summary" method="post">  
+                <input type="hidden" name="filename" value="${filename}" />
+                <input type="hidden" name="time" value="${time}" />
+                </form>`);
+    $('body').append(form);
+    form.submit().remove();
+    maincontainer.className = 'container jumbotron d-flex align-items-center min-vh-100'
+    maincontainer.innerHTML = `<div class="w-100 mb-50" >
+                          <div id="loading">
+                                      <div class="text-center mb-4">
+                                          <h1>Processing, please wait</h1>
+                                      </div>
+                                      <div class="text-center mb-4">
+                                          <div class="spinner-grow ms-2 me-2" role="status"></div>
+                                          <div class="spinner-grow ms-2 me-2" role="status"></div>
+                                          <div class="spinner-grow ms-2 me-2" role="status"></div>
+                                          <div class="spinner-grow ms-2 me-2" role="status"></div>
+                                      </div>
+                                      
+                                  </div>
+                          </div>`
+
+  }
+
+  function delBtn(){
+    let filename = filenames[currentFileIndex]
+    let time = times[currentFileIndex]
+    if(confirm(`Are you sure you want to delete the "${filename}" file?`)){
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "delfile",
+        dataType: "json",
+        data: JSON.stringify({filename: filename,time:time}),
+        success: function(res){
+            if(res['message'] == 'success'){
+              location.reload();
+            }
+        }
+      });
+    }
+    
+  }
+
+  // $(document).ready(function() {
+  //   $('#summaryBtn').click(function(e){
+  //     console.log('test summary')
+  //     let filename = filenames[currentFileIndex]
+  //     let time = times[currentFileIndex]
+  //     let form_data = new FormData();
+  //     form_data.append("filename",filename)
+  //     form_data.append("time",time)
+
+  //     request.open("POST", "summary");
+  //     request.send(form_data);
+  //     // $.ajax({
+  //     //   url: "summary",
+  //     //   dataType:'json',
+  //     //   cache:false,
+  //     //   contentType:false,
+  //     //   processData:false,
+  //     //   data:form_data,
+  //     //   type:'post',
+  //     //   success:function(res){
+          
+  //     //   }
+  //     // });
+  //   });
+  // })
+  
+  
+
+</script>
+</html>
